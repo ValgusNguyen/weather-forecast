@@ -2,6 +2,9 @@
 Weather forecast ->
 - using user's location (default is London)
 -> location: https://developer.mozilla.org/en-US/docs/Web/API/Geolocation
+- API: GeoDB Cities
+
+=> Use asyncPaginate to loading page by page
 
 - data: weather api
 -> weather api: https://openweathermap.org/api / https://openweathermap.org/
@@ -12,5 +15,8 @@ Weather forecast ->
 ## Example
 ![example](Example.png)
 
-## Using
- -nextjs
+## Framework
+- nextjs
+
+## Accessibility
+- use correct heading tags
