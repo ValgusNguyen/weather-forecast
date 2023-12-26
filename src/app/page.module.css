@@ -15,46 +15,46 @@
   box-sizing: border-box;
 } */
 .container {
-  height: 600px;
-  width: 70%;
-  background: rgba(255, 255, 255, 0.872);
-  background-size: cover;
-  display: flex;
-  flex-direction: row;
-  margin: 30px auto;
-  color: white;
-  border: 5px solid whitesmoke;
-  border-radius: 20px;
+	height: 600px;
+	width: 70%;
+	background: rgba(255, 255, 255, 0.872);
+	background-size: cover;
+	display: flex;
+	flex-direction: row;
+	margin: 30px auto;
+	color: white;
+	border: 5px solid whitesmoke;
+	border-radius: 20px;
 }
 
 .search-bar {
-  /* display: flex;
+	/* display: flex;
   justify-content: center;
   margin-right: 110px;
   width: fit-content; */
-  height: inherit;
-  width: 100%;
-  padding: 70px 10px;
+	height: inherit;
+	width: 100%;
+	padding: 70px 10px;
 }
 
 .second_container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  align-items: center;
-  height: 400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	align-items: center;
+	height: 400px;
 }
 
 .third_Container {
-  padding: 10px 0px;
+	padding: 10px 0px;
 }
 
 .header_Container {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 .header_Container h1 {
-  font-size: 50px;
-  border-bottom: 3px solid black;
+	font-size: 50px;
+	border-bottom: 3px solid black;
 }
