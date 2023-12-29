@@ -1,0 +1,38 @@
+.searchBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* width: fit-content; */
+    max-width: 200px;
+    height: 150px;
+    padding: 20px 10px;
+    background-color: black;
+}
+
+.current-date {
+   font-size: 15px;
+   font-weight: 600;
+   line-height: 1; 
+   margin: 0;
+   letter-spacing: 2;
+}
+
+.weather {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 600px;
+    background-color: rgba(171, 110, 110, 0.744);
+}
+
+.current-weather {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

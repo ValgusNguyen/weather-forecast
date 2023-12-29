@@ -15,27 +15,18 @@
   box-sizing: border-box;
 } */
 .container {
-	height: 600px;
+	height: 800px;
 	width: 70%;
-	background: rgba(255, 255, 255, 0.872);
+	background: rgb(176, 211, 225);
 	background-size: cover;
 	display: flex;
 	flex-direction: row;
 	margin: 30px auto;
 	color: white;
-	border: 5px solid whitesmoke;
+	border: 2px solid whitesmoke;
 	border-radius: 20px;
 }
 
-.search-bar {
-	/* display: flex;
-  justify-content: center;
-  margin-right: 110px;
-  width: fit-content; */
-	height: inherit;
-	width: 100%;
-	padding: 70px 10px;
-}
 
 .second_container {
 	display: flex;
