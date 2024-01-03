@@ -13,7 +13,6 @@ const Search = ({ onSearchChange }: any) => {
 		const response = await fetch(url, geoApiOptions);
 		const result = await response.json();
 
-		// console.log(result);
 		return {
 			options: result.data.map((result: Record<string, string>) => ({
 				value: `${result.latitude} ${result.longitude}`,
