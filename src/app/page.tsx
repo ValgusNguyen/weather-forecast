@@ -22,10 +22,10 @@ export default function Home() {
 		);
 
 		Promise.all([currentWeatherFetch, forecastFetch])
-			.then( response => {
+			.then(response => {
 				// const weatherResponse = response[0].json();
 				// const forcastResponse = response[1].json();
-				console.log(response,'aa');
+				console.log(response, 'aa');
 
 				//   setCurrentWeather({ city: searchData.label, ...weatherResponse });
 				//   setForecast({ city: searchData.label, ...forcastResponse });
