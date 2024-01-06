@@ -1,4 +1,5 @@
 import './LeftSide.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Time and date
 const time = new Date().toLocaleTimeString('en-us', {
@@ -25,6 +26,9 @@ const CurrentWeather = () => {
 			<h2 className="weather-des">Cloudy</h2>
 			<div className="bottom">
 				<p className="humidity">Humidity</p>
+				<span>
+					<FontAwesomeIcon icon="fa-solid fa-cloud" />
+				</span>
 				<p className="wind-speed">Wind Speed</p>
 			</div>
 		</div>
