@@ -1,3 +1,4 @@
+import { faCloud, faSun } from '@fortawesome/free-solid-svg-icons';
 import './LeftSide.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -27,9 +28,12 @@ const CurrentWeather = () => {
 			<div className="bottom">
 				<p className="humidity">Humidity</p>
 				<span>
-					<FontAwesomeIcon icon="fa-solid fa-cloud" />
+					<FontAwesomeIcon icon={faCloud} />
 				</span>
 				<p className="wind-speed">Wind Speed</p>
+				<span>
+					<FontAwesomeIcon icon={faSun} />
+				</span>
 			</div>
 		</div>
 	);

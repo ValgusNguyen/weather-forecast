@@ -38,7 +38,7 @@ export default function Home() {
 		<div className={styles.container}>
 			<div>
 				<Search onSearchChange={handleOnSearchChange} />
-				{/* <CurrentWeather /> */}
+				<CurrentWeather />
 				{/* {forecast && <Forecast data={forecast} />} */}
 			</div>
 		</div>
