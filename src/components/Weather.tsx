@@ -16,24 +16,33 @@ const date = new Date().toLocaleDateString('en-us', {
 	day: 'numeric',
 });
 
-const CurrentWeather = () => {
+const CurrentWeather = ({ data }: any) => {
 	return (
 		<div className="weather">
-			<h3 className="current-date">date</h3>
+			<h3 className="current-date">
+				{time} - {date}
+			</h3>
 			<div className="current-weather">
-				<image className="weather-icon" />
-				<h1 className="temperature">Tem</h1>
+				<img
+					alt="weather"
+					className="weather-icon"
+					src={`weathericons${data.weather[0].icon}`}
+				/>
+				<h1 className="temperature">
+					{Math.round(data.main.temp)}
+					<sup>°F</sup>
+				</h1>
 			</div>
-			<h2 className="weather-des">Cloudy</h2>
+			<h2 className="weather-des">{data.weather[0].description}</h2>
 			<div className="bottom">
-				<p className="humidity">Humidity</p>
-				<span>
-					<FontAwesomeIcon icon={faCloud} />
-				</span>
-				<p className="wind-speed">Wind Speed</p>
-				<span>
-					<FontAwesomeIcon icon={faSun} />
-				</span>
+				<div className="parameter-row">
+					<p className="humidity">Humidity</p>
+					<span className="humidity">{data.main.humidity}%</span>
+				</div>
+				<div className="parameter-row">
+					<p className="wind-speed">Wind Speed</p>
+					<span className="wind_value">{data.wind.speed}</span>
+				</div>
 			</div>
 		</div>
 	);

@@ -4,13 +4,14 @@ import styles from './page.module.css';
 import Search from '../components/SearchBar';
 import CurrentWeather from '@/components/Weather';
 import { WEATHER_API_KEY, WEATHER_API_URL } from './Api';
+import { useState } from 'react';
 
 export default function Home() {
+	const [currentWeather, setCurrentWeather] = useState();
+	const [forecast, setForecast] = useState();
+
 	const handleOnSearchChange = async (searchData: any) => {
 		const [lat, lon] = searchData.value.split(' ');
-		// console.log(searchData, 'searchData');
-
-		// const currentWeatherFetch = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`)
 		const currentWeatherFetch = fetch(
 			'https://api.openweathermap.org/data/2.5/weather?lat=21.0245&lon=105.84117&appid=34fc2decbb2ea488dcbbc7c359a08a0e',
 		);
@@ -32,13 +33,15 @@ export default function Home() {
 		]);
 
 		console.log(currentWeatherResult, forecastResult);
+		setCurrentWeather({ city: searchData.label, ...currentWeatherResult });
+		setCurrentWeather({ city: searchData.label, ...forecastResult });
 	};
 
 	return (
 		<div className={styles.container}>
 			<div>
 				<Search onSearchChange={handleOnSearchChange} />
-				<CurrentWeather />
+				{currentWeather && <CurrentWeather data={currentWeather} />}
 				{/* {forecast && <Forecast data={forecast} />} */}
 			</div>
 		</div>

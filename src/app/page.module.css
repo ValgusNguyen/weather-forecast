@@ -15,8 +15,8 @@
   box-sizing: border-box;
 } */
 .container {
-	height: 800px;
-	width: 70%;
+	height: 550px;
+	width: 80%;
 	background: rgb(176, 211, 225);
 	background-size: cover;
 	display: flex;
@@ -34,6 +34,7 @@
 	align-items: center;
 	align-items: center;
 	height: 400px;
+	background-color: blue;
 }
 
 .third_Container {
