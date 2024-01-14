@@ -4,6 +4,7 @@ import styles from './page.module.css';
 import Search from '../components/SearchBar';
 import CurrentWeather from '@/components/Weather';
 import { WEATHER_API_KEY, WEATHER_API_URL } from './Api';
+import Forecast from '@/components/forecast';
 import { useState } from 'react';
 
 export default function Home() {
@@ -15,11 +16,14 @@ export default function Home() {
 		const currentWeatherFetch = fetch(
 			'https://api.openweathermap.org/data/2.5/weather?lat=21.0245&lon=105.84117&appid=34fc2decbb2ea488dcbbc7c359a08a0e',
 		);
+		// const currentWeatherFetch = fetch(
+		// 	`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
+		//   );
 		// const forecastFetch = fetch(
 		// 	`${WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
 		//   );
 		const forecastFetch = fetch(
-			'https://api.openweathermap.org/data/2.5/weather?lat=21.0245&lon=105.84117&appid=34fc2decbb2ea488dcbbc7c359a08a0e&units=metric',
+			'https://api.openweathermap.org/data/2.5/forecast?lat=21.0245&lon=105.84117&appid=34fc2decbb2ea488dcbbc7c359a08a0e&units=metric',
 		);
 
 		const [currentWeatherResponse, forecastResponse] = await Promise.all([
@@ -32,16 +36,21 @@ export default function Home() {
 			forecastResponse.json(),
 		]);
 
-		console.log(currentWeatherResult, forecastResult);
+		console.log(currentWeatherResult);
+		console.log(forecastResult,"for");
+
 		setCurrentWeather({ city: searchData.label, ...currentWeatherResult });
-		setCurrentWeather({ city: searchData.label, ...forecastResult });
+		setForecast({ city: searchData.label, ...forecastResult });
 	};
 
 	return (
 		<div className={styles.container}>
-			<div>
+			<div className={styles.leftSide}>
 				<Search onSearchChange={handleOnSearchChange} />
 				{currentWeather && <CurrentWeather data={currentWeather} />}
+			</div>
+			<div className={styles.rightSide}>
+				<Forecast data={forecast}/>
 				{/* {forecast && <Forecast data={forecast} />} */}
 			</div>
 		</div>
