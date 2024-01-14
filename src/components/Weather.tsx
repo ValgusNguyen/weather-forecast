@@ -1,6 +1,7 @@
 import { faCloud, faSun } from '@fortawesome/free-solid-svg-icons';
 import './LeftSide.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Image from 'next/image';
 
 // Time and date
 const time = new Date().toLocaleTimeString('en-us', {
@@ -23,10 +24,10 @@ const CurrentWeather = ({ data }: any) => {
 				{time} - {date}
 			</h3>
 			<div className="current-weather">
-				<img
+				<Image
 					alt="weather"
 					className="weather-icon"
-					src={`weathericons${data.weather[0].icon}`}
+					src={`/weathericons/${data.weather[0].icon}.png`}
 				/>
 				<h1 className="temperature">
 					{Math.round(data.main.temp)}

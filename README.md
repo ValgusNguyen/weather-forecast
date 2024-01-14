@@ -16,7 +16,7 @@ Weather forecast ->
 
 ## Example
 
-![example](Example.png)
+![example](./docs/Example.png)
 
 ## Framework
 
