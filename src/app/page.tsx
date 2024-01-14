@@ -3,7 +3,6 @@ import Image from 'next/image';
 import styles from './page.module.css';
 import Search from '../components/SearchBar';
 import CurrentWeather from '@/components/Weather';
-import { WEATHER_API_KEY, WEATHER_API_URL } from './Api';
 import Forecast from '@/components/forecast';
 import { useState } from 'react';
 
@@ -37,7 +36,7 @@ export default function Home() {
 		]);
 
 		console.log(currentWeatherResult);
-		console.log(forecastResult,"for");
+		console.log(forecastResult, 'for');
 
 		setCurrentWeather({ city: searchData.label, ...currentWeatherResult });
 		setForecast({ city: searchData.label, ...forecastResult });
@@ -46,11 +45,11 @@ export default function Home() {
 	return (
 		<div className={styles.container}>
 			<div className={styles.leftSide}>
-				<Search onSearchChange={handleOnSearchChange} />
-				{currentWeather && <CurrentWeather data={currentWeather} />}
+				{/* <Search onSearchChange={handleOnSearchChange} /> */}
+				{/* {currentWeather && <CurrentWeather data={currentWeather} />} */}
 			</div>
 			<div className={styles.rightSide}>
-				<Forecast data={forecast}/>
+				{/* <Forecast data={forecast} /> */}
 				{/* {forecast && <Forecast data={forecast} />} */}
 			</div>
 		</div>
