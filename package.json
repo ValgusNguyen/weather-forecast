@@ -15,9 +15,7 @@
 		"@fortawesome/react-fontawesome": "^0.2.0",
 		"next": "14.0.4",
 		"react": "^18",
-		"react-dom": "^18",
-		"react-select": "^5.8.0",
-		"react-select-async-paginate": "^0.7.3"
+		"react-dom": "^18"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^18.4.3",
