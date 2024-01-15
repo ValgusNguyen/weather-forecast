@@ -7,9 +7,9 @@ export default function Home() {
 	const [forecast, setForecast] = useState();
 
 	return (
-		<div className={styles.card__container}>
-			<div className={styles.card__containerLeft}></div>
-			<div className={styles.card__containerRight}></div>
+		<div className={styles['card-container']}>
+			<div className={styles['card-container-left']}></div>
+			<div className={styles['card-container-right']}></div>
 		</div>
 	);
 }

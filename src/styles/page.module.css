@@ -1,7 +1,7 @@
-.card__container {
+.card-container {
 	height: 80vh;
 	width: 80vw;
-	background: rgb(176, 211, 225);
+	background: rgb(176 211 225);
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -15,14 +15,14 @@
 	border-radius: 10px;
 }
 
-.card__containerRight {
+.card-container-right {
 	flex: 3;
 	height: 100%;
 	width: 100%;
 	background: red;
 }
 
-.card__containerLeft {
+.card-container-left {
 	flex: 1;
 	height: 100%;
 	width: 100%;
