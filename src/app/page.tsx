@@ -4,11 +4,20 @@ import { useEffect, useState } from 'react';
 import styles from '../styles/page.module.css';
 
 export default function Page() {
-	// const [currentWeather, setCurrentWeather] = useState();
-	// const [forecast, setForecast] = useState();
+	const [currentWeather, setCurrentWeather] = useState({});
+	const [forecast, setForecast] = useState({});
 
 	useEffect(() => {
-		getUserWeather();
+		const getInitialData = async () => {
+			const { currentWeatherData, forecastData } = await getUserWeather();
+
+			setCurrentWeather(currentWeatherData);
+			setForecast(forecastData);
+		};
+
+		getInitialData();
+
+		return () => {};
 	}, []);
 
 	return (

@@ -33,13 +33,12 @@ export const getUserWeather = async () => {
 			},
 		});
 
-		const [currrentWeather, forecast] = await Promise.all([
+		const [currentWeatherData, forecastData] = await Promise.all([
 			currentWeatherRequest,
 			forecastRequest,
 		]);
 
-		console.log(currrentWeather);
-		console.log(forecast);
+		return { currentWeatherData, forecastData };
 	} catch (error) {
 		throw error;
 	}
