@@ -1,0 +1,8 @@
+export const env: Record<string, any> = {
+	OPEN_WEATHER_API_URL: process.env.NEXT_PUBLIC_OPEN_WEATHER_API_URL,
+	OPEN_WEATHER_API_KEY: process.env.NEXT_PUBLIC_OPEN_WEATHER_API_KEY,
+
+	GEO_API_URL: process.env.NEXT_PUBLIC_GEO_API_URL,
+	GEO_API_KEY: process.env.NEXT_PUBLIC_GEO_API_KEY,
+	GEO_API_HOST: process.env.NEXT_PUBLIC_GEO_API_HOST,
+};

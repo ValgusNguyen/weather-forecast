@@ -1,5 +1,5 @@
 'use client';
-import { getUserWeather } from '@/utils';
+import { getUserWeather } from '@/utils/geoLocation';
 import { useEffect, useState } from 'react';
 import styles from '../styles/page.module.css';
 
