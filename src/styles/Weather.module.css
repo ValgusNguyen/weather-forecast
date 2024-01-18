@@ -3,18 +3,7 @@
 	flex-direction: column;
 	justify-content: space-evenly;
 	height: 70%;
-	background-color: rgba(171, 110, 110, 0.744);
-}
-
-.searchBar {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	/* width: fit-content; */
-	width: 300px;
-	height: 20%;
-	padding: 20px 10px;
-	background-color: black;
+	background-color: rgb(171 110 110 / 74.4%);
 }
 
 .current-date {
@@ -47,7 +36,7 @@
 }
 
 .humidity,
-.wind_value {
+.wind-value {
 	display: flex;
 	justify-content: space-evenly;
 }

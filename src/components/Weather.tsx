@@ -1,5 +1,5 @@
 import { faCloud, faSun } from '@fortawesome/free-solid-svg-icons';
-import './LeftSide.css';
+import styles from '../styles/Weather.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 
@@ -17,7 +17,7 @@ const date = new Date().toLocaleDateString('en-us', {
 	day: 'numeric',
 });
 
-const CurrentWeather = ({ data }: any) => {
+export const Weather = ({ data }: any) => {
 	return (
 		<div className="weather">
 			<h3 className="current-date">
@@ -48,4 +48,3 @@ const CurrentWeather = ({ data }: any) => {
 		</div>
 	);
 };
-export default CurrentWeather;

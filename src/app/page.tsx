@@ -1,7 +1,8 @@
 'use client';
+import { Weather } from '@/components/Weather';
 import { getUserWeather } from '@/utils/geoLocation';
 import { useEffect, useState } from 'react';
-import styles from '../styles/page.module.css';
+import styles from '@/styles/page.module.css';
 
 export default function Page() {
 	const [currentWeather, setCurrentWeather] = useState({});
@@ -16,13 +17,13 @@ export default function Page() {
 		};
 
 		getInitialData();
-
-		return () => {};
 	}, []);
 
 	return (
 		<div className={styles['card-container']}>
-			<div className={styles['card-container-left']}></div>
+			<div className={styles['card-container-left']}>
+				{/* <Weather /> */}
+			</div>
 			<div className={styles['card-container-right']}></div>
 		</div>
 	);
