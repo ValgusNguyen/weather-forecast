@@ -1,7 +1,7 @@
 .card-container {
 	height: 80vh;
 	width: 80vw;
-	background: rgb(176 211 225);
+	background: white;
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -10,21 +10,22 @@
 	align-items: center;
 	column-gap: 1rem;
 	padding: 2rem;
-	color: white;
-	border: 2px solid whitesmoke;
+	color: #d8d8d8;
+	border: 2px solid rgb(176 211 225);
 	border-radius: 10px;
-}
+	box-shadow: 10px 10px 5px 0 rgb(225 237 255 / 75%);
 
-.card-container-right {
-	flex: 3;
-	height: 100%;
-	width: 100%;
-	background: red;
-}
+	.card-container-right {
+		flex: 3;
+		height: 100%;
+		width: 100%;
 
-.card-container-left {
-	flex: 1;
-	height: 100%;
-	width: 100%;
-	background: blue;
+		/* background: red; */
+	}
+
+	.card-container-left {
+		flex: 1;
+		height: 100%;
+		width: 100%;
+	}
 }
