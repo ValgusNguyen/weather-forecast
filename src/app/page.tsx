@@ -23,7 +23,7 @@ export default function Page() {
 		<div className={styles['card-container']}>
 			<div className={styles['card-container-left']}>
 				{Object.keys(currentWeather).length ? (
-					<Weather weather={currentWeather} />
+					<Weather weatherInfo={currentWeather} />
 				) : (
 					<div>No current weather</div>
 				)}
