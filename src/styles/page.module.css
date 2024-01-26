@@ -15,25 +15,6 @@
 	border-radius: 10px;
 	box-shadow: 10px 10px 5px 0 rgb(225 237 255 / 75%);
 
-	.location-info {
-		flex: 1;
-		display: flex;
-		column-gap: 1rem;
-		align-items: center;
-		padding: 0 2rem;
-
-		.location-info-icon {
-			font-size: 2rem;
-			color: var(--secondary-color);
-		}
-
-		.location-info-text {
-			letter-spacing: 2px;
-			font-weight: 500;
-			text-transform: capitalize;
-		}
-	}
-
 	.weather-info {
 		flex: 5;
 		display: flex;

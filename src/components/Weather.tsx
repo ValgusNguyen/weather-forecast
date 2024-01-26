@@ -37,7 +37,7 @@ export const Weather = ({ weatherInfo }: Record<string, any>) => {
 				<div className={styles['parameter-row']}>
 					<p className={styles['wind-speed']}>Wind Speed</p>
 					<span className={styles['wind-value']}>
-						{weatherInfo.wind.speed} km/j
+						{weatherInfo.wind.speed} Km/J
 					</span>
 				</div>
 			</div>

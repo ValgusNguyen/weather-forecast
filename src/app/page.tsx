@@ -1,4 +1,5 @@
 'use client';
+import { Location } from '@/components/Location';
 import { Weather } from '@/components/Weather';
 import styles from '@/styles/page.module.css';
 import { getUserWeather } from '@/utils/geoLocation';
@@ -23,27 +24,24 @@ export default function Page() {
 		getInitialData();
 	}, []);
 
-	return (
+	console.log(currentWeather);
+	return Object.keys(currentWeather).length > 0 ? (
 		<div className={styles['card-container']}>
-			<div className={styles['location-info']}>
-				<FontAwesomeIcon
-					className={styles['location-info-icon']}
-					icon={faMapPin}
-				/>
-				<span className={styles['location-info-text']}>
-					{`${currentWeather.name}, ${currentWeather.sys.country}`}
-				</span>
-			</div>
+			<Location
+				name={currentWeather.name}
+				country={currentWeather.sys.country}
+			/>
 			<div className={styles['weather-info']}>
 				<div className={styles['weather-info-left']}>
-					{Object.keys(currentWeather).length ? (
-						<Weather weatherInfo={currentWeather} />
-					) : (
-						<div>No current weather</div>
-					)}
+					<Weather weatherInfo={currentWeather} />
 				</div>
 				<div className={styles['weather-info-right']}></div>
 			</div>
+		</div>
+	) : (
+		<div>
+			Have not fetch the data and have not put a loading there either so
+			chill on
 		</div>
 	);
 }
