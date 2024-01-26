@@ -1,7 +1,7 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloud } from '@fortawesome/free-solid-svg-icons';
-import styles from '../styles/Weather.module.css';
+import { WEATHER_ICON } from '@/constants';
+import styles from '@/styles/Weather.module.css';
 import { getCurrentDate } from '@/utils/time';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const Weather = ({ weatherInfo }: Record<string, any>) => {
 	const { dt, timezone } = weatherInfo;
@@ -9,13 +9,15 @@ export const Weather = ({ weatherInfo }: Record<string, any>) => {
 
 	const currentDate = getCurrentDate(dt, timezone);
 
+	const currentWeatherIcon = WEATHER_ICON[currentWeather.icon];
+
 	return (
 		<div className={styles.weather}>
 			<h3 className={styles['current-date']}>{currentDate}</h3>
 			<div className={styles['current-weather']}>
 				<FontAwesomeIcon
 					className={styles['current-weather-icon']}
-					icon={faCloud}
+					icon={currentWeatherIcon}
 				/>
 				<h1 className={styles['temperature']}>
 					{weatherInfo.main.temp}
