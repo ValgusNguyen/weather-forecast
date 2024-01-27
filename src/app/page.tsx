@@ -3,8 +3,6 @@ import { Location } from '@/components/Location';
 import { Weather } from '@/components/Weather';
 import styles from '@/styles/page.module.css';
 import { getUserWeather } from '@/utils/geoLocation';
-import { faMapPin } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 
 export default function Page() {
@@ -24,7 +22,6 @@ export default function Page() {
 		getInitialData();
 	}, []);
 
-	console.log(currentWeather);
 	return Object.keys(currentWeather).length > 0 ? (
 		<div className={styles['card-container']}>
 			<Location
