@@ -1,13 +1,27 @@
 import { useState } from 'react';
-import { AsyncPaginate } from 'react-select-async-paginate';
 import { GEO_URL, geoApiOptions } from '../app/Api';
 import './LeftSide.css';
+import axios from 'axios';
+
+
+// const Select = () => {
+// 	const [select, setSelect] = useState();
+// 	const  currentCity = ({latitude, longitude} : any) => {
+// 		const link = `${GEO_URL}/cities?location=${latitude}+${longitude}`
+// 		const response = await fetch(link, geoApiOptions);
+// 		const result = await response.json();
+// 		return {
+
+// 		}
+// 	}
+// }
+
 
 const Search = ({ onSearchChange }: any) => {
 	const [search, setSearch] = useState();
 	const loadOptions = async (inputValue: any) => {
-		// TODO: use new URL to build out the url before calling
-		const url = `${GEO_URL}/cities?namePrefix=${inputValue}`;
+		
+		const url = `${GEO_URL}/cities?location=${inputValue}`;
 
 		// TODO: use axios for best practices
 		const response = await fetch(url, geoApiOptions);
@@ -18,7 +32,6 @@ const Search = ({ onSearchChange }: any) => {
 				value: `${result.latitude} ${result.longitude}`,
 				label: `${result.name}`,
 			})),
-			hasMore: true,
 		};
 	};
 
@@ -29,13 +42,7 @@ const Search = ({ onSearchChange }: any) => {
 
 	return (
 		<div className="searchBar">
-			<AsyncPaginate
-				placeholder="Search your city"
-				debounceTimeout={600}
-				value={search}
-				onChange={handleOnChange}
-				loadOptions={loadOptions}
-			/>
+
 		</div>
 	);
 };

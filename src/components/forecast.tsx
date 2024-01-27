@@ -3,7 +3,7 @@ import './rightSide.css';
 
 
 const Forecast = ({data}: any) => {
-	const day= src={`weathericons${data.weather[0].icon}`}
+	// const day=
 	
 	return (
 		<>

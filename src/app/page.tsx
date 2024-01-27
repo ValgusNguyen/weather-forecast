@@ -6,10 +6,24 @@ import CurrentWeather from '@/components/Weather';
 import { WEATHER_API_KEY, WEATHER_API_URL } from './Api';
 import Forecast from '@/components/forecast';
 import { useState } from 'react';
+import { GEO_URL, geoApiOptions } from '../app/Api';
 
 export default function Home() {
 	const [currentWeather, setCurrentWeather] = useState();
 	const [forecast, setForecast] = useState();
+	const [city, setCity] = useState('')
+
+	navigator.geolocation.getCurrentPosition(
+		async (position: any) => {
+			const { latitude, longitude } = await position.coords;
+			console.log(latitude, longitude, "this");
+			return position;
+		},
+		(error: any) => {
+			console.log(error);
+		},
+	);
+	const link = `${GEO_URL}/cities?location=$  `;
 
 	const handleOnSearchChange = async (searchData: any) => {
 		const [lat, lon] = searchData.value.split(' ');
@@ -37,7 +51,7 @@ export default function Home() {
 		]);
 
 		console.log(currentWeatherResult);
-		console.log(forecastResult,"for");
+		console.log(forecastResult, 'for');
 
 		setCurrentWeather({ city: searchData.label, ...currentWeatherResult });
 		setForecast({ city: searchData.label, ...forecastResult });
@@ -46,11 +60,13 @@ export default function Home() {
 	return (
 		<div className={styles.container}>
 			<div className={styles.leftSide}>
-				<Search onSearchChange={handleOnSearchChange} />
+				{/* <Search onSearchChange={handleOnSearchChange} /> */}
+				<h3>Your city</h3>
+				<input type="text" placeholder="Enter city name" value={city} onChange={(e) => setCity(e.target.value)}></input>
 				{currentWeather && <CurrentWeather data={currentWeather} />}
 			</div>
 			<div className={styles.rightSide}>
-				<Forecast data={forecast}/>
+				<Forecast data={forecast} />
 				{/* {forecast && <Forecast data={forecast} />} */}
 			</div>
 		</div>
