@@ -14,3 +14,7 @@ export const getCurrentDate = (timezone: number) => {
 
 	return `${time}, ${monthDate}, ${year}`;
 };
+
+export const getDateTimefromUnix = (dt: number) => {
+	return DateTime.fromSeconds(dt).toLocaleString(DateTime.DATE_SHORT);
+};

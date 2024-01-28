@@ -1,6 +1,6 @@
 'use client';
 import { Location } from '@/components/Location';
-import { Weather } from '@/components/Weather';
+import WeatherInfo from '@/components/WeatherInfo';
 import styles from '@/styles/page.module.css';
 import { getUserWeather } from '@/utils/geoLocation';
 import { useEffect, useState } from 'react';
@@ -28,12 +28,7 @@ export default function Page() {
 				name={currentWeather.name}
 				country={currentWeather.sys.country}
 			/>
-			<div className={styles['weather-info']}>
-				<div className={styles['weather-info-left']}>
-					<Weather weatherInfo={currentWeather} />
-				</div>
-				<div className={styles['weather-info-right']}></div>
-			</div>
+			<WeatherInfo {...{ currentWeather, forecast }} />
 		</div>
 	) : (
 		<div>

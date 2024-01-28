@@ -13,23 +13,4 @@
 	padding: 2rem;
 	color: var(--primary-color);
 	border-radius: 10px;
-
-	.weather-info {
-		flex: 5;
-		display: flex;
-		align-items: center;
-		column-gap: 1rem;
-
-		.weather-info-right {
-			flex: 4;
-			height: 100%;
-			width: 100%;
-		}
-
-		.weather-info-left {
-			flex: 2;
-			height: 100%;
-			width: 100%;
-		}
-	}
 }

@@ -31,6 +31,7 @@ export const getUserWeather = async () => {
 			params: {
 				lat,
 				lon,
+				units: 'metric',
 			},
 		});
 

@@ -4,7 +4,7 @@ import { getCurrentDate } from '@/utils/time';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 
-export const Weather = ({ weatherInfo }: Record<string, any>) => {
+const Weather = ({ weatherInfo }: Record<string, any>) => {
 	const { timezone } = weatherInfo;
 	const currentWeather = weatherInfo.weather[0];
 	const currentWeatherIcon = WEATHER_ICON[currentWeather.icon];
@@ -54,3 +54,5 @@ export const Weather = ({ weatherInfo }: Record<string, any>) => {
 		</div>
 	);
 };
+
+export default Weather;
