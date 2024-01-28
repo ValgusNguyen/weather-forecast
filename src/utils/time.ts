@@ -1,10 +1,8 @@
 import { DateTime } from 'luxon';
 
-export const getCurrentDate = (dt: number, timezone: number) => {
+export const getCurrentDate = (timezone: number) => {
 	const offset = `UTC${timezone < 0 ? '' : '+'}${timezone / 3600}`;
-	const luxonDate = DateTime.fromSeconds(dt, { zone: offset });
-
-	const dateTime = luxonDate.toLocal();
+	const dateTime = DateTime.now().setZone(offset);
 
 	const year = dateTime.year;
 	const monthDate = dateTime.toLocaleString({
