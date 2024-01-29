@@ -17,8 +17,9 @@ const ForecastCard = ({
 			? 'Today'
 			: date;
 
-	const { humidity, weather } = forecastInfo;
+	const { main, weather } = forecastInfo;
 
+	const humidity = main.humidity;
 	const icon = WEATHER_ICON[weather.icon];
 
 	return (
