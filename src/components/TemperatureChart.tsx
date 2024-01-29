@@ -13,7 +13,6 @@ const TemperatureChart = ({ chartData }: { chartData: Array<any> }) => {
 		},
 	);
 
-	console.log(renderData);
 	return (
 		<div className={styles.container}>
 			<div className={styles.title}>Temperature</div>
