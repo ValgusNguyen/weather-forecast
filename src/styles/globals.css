@@ -16,8 +16,8 @@ body {
 }
 
 :root {
-	--neutral-color: #dcf2f1;
-	--primary-color: #7fc7d9;
-	--secondary-color: #365486;
-	--accent-color: #0f1035;
+	--neutral-color: #cdf5fd;
+	--accent-color: #a0e9ff;
+	--secondary-color: #00a9ff;
+	--primary-color: #89cff3;
 }

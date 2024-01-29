@@ -13,18 +13,15 @@
     row-gap: 1rem;
 
     .forecast-chart {
-      background: blue;
       height: 100%;
       width: 100%;
     }
 
     .forecast-detail {
-      background: red;
       height: 100%;
       width: 100%;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0.5rem;
+      display: flex;
+      column-gap: 0.5rem;
     }
   }
 

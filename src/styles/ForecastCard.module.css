@@ -1,6 +1,41 @@
 .container {
   display: flex;
-  background: brown;
+  background: var(--accent-color);
   height: 100%;
   width: 100%;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  color: var(--secondary-color);
+  cursor: grab;
+  font-weight: bold;
+
+  .icon {
+    font-size: 3rem;
+  }
+
+  .metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    place-content: center;
+
+    .title {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      font-weight: normal;
+    }
+  }
+}
+
+.container:hover {
+  background: var(--secondary-color);
+  color: var(--neutral-color);
+  transition: all 0.5s ease-out;
+
+  .icon {
+    font-size: 3.25rem;
+    transition: all ease-in-out;
+  }
 }
