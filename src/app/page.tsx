@@ -10,6 +10,7 @@ export default function Page() {
 		{},
 	);
 	const [forecast, setForecast] = useState<Record<string, any>>({});
+	const [isLoading, setIsLoading] = useState<boolean>(true);
 
 	useEffect(() => {
 		const getInitialData = async () => {
@@ -17,23 +18,25 @@ export default function Page() {
 
 			setCurrentWeather(currentWeatherData);
 			setForecast(forecastData);
+			setIsLoading(false);
 		};
 
 		getInitialData();
 	}, []);
 
-	return Object.keys(currentWeather).length > 0 ? (
-		<div className={styles['card-container']}>
-			<Location
-				name={currentWeather.name}
-				country={currentWeather.sys.country}
-			/>
-			<WeatherInfo {...{ currentWeather, forecast }} />
-		</div>
-	) : (
-		<div>
-			Have not fetch the data and have not put a loading there either so
-			chill on
-		</div>
+	return (
+		<>
+			{isLoading ? (
+				<div>Loading...</div>
+			) : (
+				<div className={styles['card-container']}>
+					<Location
+						name={currentWeather.name}
+						country={currentWeather.sys.country}
+					/>
+					<WeatherInfo {...{ currentWeather, forecast }} />
+				</div>
+			)}
+		</>
 	);
 }
