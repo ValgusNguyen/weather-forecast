@@ -1,6 +1,5 @@
 import { WEATHER_ICON } from '@/constants';
 import styles from '@/styles/ForecastCard.module.css';
-import { faCloud } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { DateTime } from 'luxon';
 
