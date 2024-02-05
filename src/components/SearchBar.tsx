@@ -17,34 +17,56 @@ import axios from 'axios';
 // }
 
 
-const Search = ({ onSearchChange }: any) => {
-	const [search, setSearch] = useState();
-	const loadOptions = async (inputValue: any) => {
+// const Search = ({ onSearchChange }: any) => {
+// 	const [search, setSearch] = useState();
+// 	const loadOptions = async (inputValue: any) => {
 		
-		const url = `${GEO_URL}/cities?location=${inputValue}`;
+// 		const url = `${GEO_URL}/cities?location=${inputValue}`;
 
-		// TODO: use axios for best practices
-		const response = await fetch(url, geoApiOptions);
-		const result = await response.json();
+// 		// TODO: use axios for best practices
+// 		const response = await fetch(url, geoApiOptions);
+// 		const result = await response.json();
 
-		return {
-			options: result.data.map((result: Record<string, string>) => ({
-				value: `${result.latitude} ${result.longitude}`,
-				label: `${result.name}`,
-			})),
-		};
+// 		return {
+// 			options: result.data.map((result: Record<string, string>) => ({
+// 				value: `${result.latitude} ${result.longitude}`,
+// 				label: `${result.name}`,
+// 			})),
+// 		};
+// 	};
+
+// 	const handleOnChange = (searchData: any) => {
+// 		setSearch(searchData);
+// 		onSearchChange(searchData);
+// 	};
+
+const Search = ({ setCity }: any) => {
+	const [location, setLocation] = useState("");
+  
+	// Set the location state to the value of the input field
+	const handleSubmit = (e:any) => {
+	  e.preventDefault();
+	  setCity(location);
 	};
-
-	const handleOnChange = (searchData: any) => {
-		setSearch(searchData);
-		onSearchChange(searchData);
-	};
-
+  
 	return (
-		<div className="searchBar">
-
+	  <div className="search-bar">
+		<div className="omrs-input-group">
+		  <form onSubmit={handleSubmit}>
+			<label>
+			  <input
+				type="text"
+				name="Location"
+				value={location}
+				required
+				onChange={(e) => setLocation(e.target.value)}
+			  />
+			</label>
+		  </form>
 		</div>
+	  </div>
 	);
-};
+  };
+  
 
 export default Search;

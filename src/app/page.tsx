@@ -5,39 +5,53 @@ import Search from '../components/SearchBar';
 import CurrentWeather from '@/components/Weather';
 import { WEATHER_API_KEY, WEATHER_API_URL } from './Api';
 import Forecast from '@/components/forecast';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GEO_URL, geoApiOptions } from '../app/Api';
 
 export default function Home() {
 	const [currentWeather, setCurrentWeather] = useState();
 	const [forecast, setForecast] = useState();
-	const [city, setCity] = useState('')
+	// const [lat, setLat] = useState();
+	// const [lon, setLon] = useState();
+	const [location, setLocation] = useState("");
 
-	navigator.geolocation.getCurrentPosition(
-		async (position: any) => {
-			const { latitude, longitude } = await position.coords;
-			console.log(latitude, longitude, "this");
-			return position;
-		},
-		(error: any) => {
-			console.log(error);
-		},
-	);
-	const link = `${GEO_URL}/cities?location=$  `;
+	async function getCityName (lat:any ,lon: any) {
+		try {
+			const response = await fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`);
+			const data = await response.json();
+			console.log(data)
+			let cityName = data.name;
+			setLocation(cityName);
+		}
+		catch (error) {
+			console.error("Can not get location");
+		}
+	}
+	useEffect(() => {
+        let watchId: number;
+        if (navigator.geolocation) {
+            watchId = navigator.geolocation.watchPosition(
+                (position) => {
+                    const { latitude, longitude } = position.coords;
+                    // console.log("longitude: ", longitude, "latitude: ", latitude);
+                    getCityName(latitude, longitude);
+                }
+            )
+        }
+        return () => {
+            if (watchId) {
+                navigator.geolocation.clearWatch(watchId);
+            }
+        };
+	}, []);
 
 	const handleOnSearchChange = async (searchData: any) => {
 		const [lat, lon] = searchData.value.split(' ');
 		const currentWeatherFetch = fetch(
-			'https://api.openweathermap.org/data/2.5/weather?lat=21.0245&lon=105.84117&appid=34fc2decbb2ea488dcbbc7c359a08a0e',
+			`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`,
 		);
-		// const currentWeatherFetch = fetch(
-		// 	`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
-		//   );
-		// const forecastFetch = fetch(
-		// 	`${WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
-		//   );
 		const forecastFetch = fetch(
-			'https://api.openweathermap.org/data/2.5/forecast?lat=21.0245&lon=105.84117&appid=34fc2decbb2ea488dcbbc7c359a08a0e&units=metric',
+			`${WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`,
 		);
 
 		const [currentWeatherResponse, forecastResponse] = await Promise.all([
@@ -62,7 +76,8 @@ export default function Home() {
 			<div className={styles.leftSide}>
 				{/* <Search onSearchChange={handleOnSearchChange} /> */}
 				<h3>Your city</h3>
-				<input type="text" placeholder="Enter city name" value={city} onChange={(e) => setCity(e.target.value)}></input>
+				<input id="location" type="text" value={location} onChange={input => { setLocation(input.target.value) }} />
+				{/* <Search setCity={location} /> */}
 				{currentWeather && <CurrentWeather data={currentWeather} />}
 			</div>
 			<div className={styles.rightSide}>
