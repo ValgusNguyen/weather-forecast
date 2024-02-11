@@ -1,6 +1,7 @@
 import { faMapPin } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from '@/styles/Location.module.css';
+import Toggle from './Toggle';
 
 export const Location = ({
 	name,
@@ -18,6 +19,7 @@ export const Location = ({
 			<span className={styles['location-info-text']}>
 				{`${name}, ${country}`}
 			</span>
+			<Toggle />
 		</div>
 	);
 };
