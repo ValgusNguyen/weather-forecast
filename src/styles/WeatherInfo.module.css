@@ -1,10 +1,11 @@
-.weather-info {
+.container {
   flex: 5;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  column-gap: 1rem;
+  gap: 2rem;
 
-  .weather-info-right {
+  .right {
     flex: 4;
     height: 100%;
     width: 100%;
@@ -12,12 +13,7 @@
     flex-direction: column;
     row-gap: 1rem;
 
-    .forecast-chart {
-      height: 100%;
-      width: 100%;
-    }
-
-    .forecast-detail {
+    .detail {
       height: 100%;
       width: 100%;
       display: flex;
@@ -25,7 +21,7 @@
     }
   }
 
-  .weather-info-left {
+  .left {
     flex: 2;
     height: 100%;
     width: 100%;

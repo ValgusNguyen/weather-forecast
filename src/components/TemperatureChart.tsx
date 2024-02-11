@@ -16,18 +16,20 @@ const TemperatureChart = ({ chartData }: { chartData: Array<any> }) => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.title}>Temperature</div>
-			<ResponsiveContainer width="100%" height="100%">
-				<AreaChart width={500} height={100} data={renderData}>
-					<Tooltip />
-					<Area
-						type="monotone"
-						dataKey="temp"
-						stroke="#00a9ff"
-						fill="#89cff3"
-						fillOpacity="0.5"
-					/>
-				</AreaChart>
-			</ResponsiveContainer>
+			<div className={styles.chart}>
+				<ResponsiveContainer width="100%" height="100%">
+					<AreaChart data={renderData}>
+						<Tooltip />
+						<Area
+							type="monotone"
+							dataKey="temp"
+							stroke="#00a9ff"
+							fill="#89cff3"
+							fillOpacity="0.5"
+						/>
+					</AreaChart>
+				</ResponsiveContainer>
+			</div>
 		</div>
 	);
 };

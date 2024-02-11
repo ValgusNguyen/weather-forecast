@@ -39,13 +39,13 @@ const WeatherInfo = ({
 	);
 
 	return (
-		<div className={styles['weather-info']}>
-			<div className={styles['weather-info-left']}>
+		<div className={styles.container}>
+			<div className={styles.left}>
 				<Weather weatherInfo={currentWeather} />
 			</div>
-			<div className={styles['weather-info-right']}>
+			<div className={styles.right}>
 				<TemperatureChart chartData={Array.from(forecastList)} />
-				<div className={styles['forecast-detail']}>
+				<div className={styles.detail}>
 					{Array.from(forecastList).map(
 						([date, weather]: [
 							date: string,

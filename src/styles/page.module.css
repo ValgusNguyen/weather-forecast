@@ -1,5 +1,4 @@
 .card-container {
-	height: 70vh;
 	width: 70vw;
 	background: var(--neutral-color);
 	position: absolute;
@@ -8,9 +7,10 @@
 	transform: translate(-50%, -50%);
 	display: flex;
 	flex-flow: column wrap;
-	place-content: center center;
-	row-gap: 1rem;
+	justify-content: center;
+	gap: 1rem;
 	padding: 2rem;
+	margin: 2rem;
 	color: var(--primary-color);
 	border-radius: 10px;
 }
