@@ -1,8 +1,8 @@
-import TemperatureChart from '@/components/TemperatureChart';
+import Forecast from '@/components/Forecast';
 import Weather from '@/components/Weather';
+import { MOBILE_WIDTH } from '@/constants';
 import styles from '@/styles/WeatherInfo.module.css';
-import { getDateTimefromUnix } from '@/utils/time';
-import ForecastCard from './ForecastCard';
+import { useEffect, useState } from 'react';
 
 const WeatherInfo = ({
 	currentWeather,
@@ -11,57 +11,26 @@ const WeatherInfo = ({
 	currentWeather: Record<string, any>;
 	forecast: Record<string, any>;
 }) => {
-	const forecastList: Map<string, any> = forecast.list.reduce(
-		(
-			forecastDates: Map<string, any>,
-			{
-				dt,
-				main,
-				weather,
-			}: {
-				dt: number;
-				main: Record<string, any>;
-				weather: Record<string, any>;
-			},
-		) => {
-			const dateString = getDateTimefromUnix(dt);
+	const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
 
-			if (forecastDates.has(dateString)) return forecastDates;
+	useEffect(() => {
+		const handleResize = () => {
+			setWindowWidth(window.innerWidth);
+		};
 
-			forecastDates.set(dateString, {
-				main,
-				weather: weather[0],
-			});
+		window.addEventListener('resize', handleResize);
 
-			return forecastDates;
-		},
-		new Map(),
-	);
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, []);
 
 	return (
 		<div className={styles.container}>
 			<div className={styles.left}>
 				<Weather weatherInfo={currentWeather} />
 			</div>
-			<div className={styles.right}>
-				<TemperatureChart chartData={Array.from(forecastList)} />
-				<div className={styles.detail}>
-					{Array.from(forecastList).map(
-						([date, weather]: [
-							date: string,
-							weather: Record<string, any>,
-						]) => {
-							return (
-								<ForecastCard
-									key={date}
-									date={date}
-									forecastInfo={weather}
-								/>
-							);
-						},
-					)}
-				</div>
-			</div>
+			{windowWidth > MOBILE_WIDTH && <Forecast forecast={forecast} />}
 		</div>
 	);
 };

@@ -43,3 +43,4 @@ export const WEATHER_ICON: Record<string, IconDefinition> = {
 };
 
 export const DEFAULT_CITY_NAME = 'Hanoi';
+export const MOBILE_WIDTH = 800;
