@@ -7,7 +7,7 @@
 
   .location-info-icon {
     font-size: 2rem;
-    color: var(--secondary-color);
+    color: var(--contrast-color);
   }
 
   .location-info-text {

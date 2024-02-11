@@ -6,10 +6,10 @@
   border-radius: 10px;
   flex-direction: column;
   gap: 1rem;
-  padding: 1rem 0;
+  margin: 1rem 0;
   align-items: center;
   justify-content: space-evenly;
-  color: var(--secondary-color);
+  color: var(--contrast-color);
   cursor: grab;
   font-weight: bold;
 
@@ -24,7 +24,7 @@
     place-content: center;
 
     .title {
-      color: var(--primary-color);
+      color: white;
       margin-bottom: 0.5rem;
       font-weight: normal;
     }
@@ -32,12 +32,11 @@
 }
 
 .container:hover {
-  background: var(--secondary-color);
+  background: var(--contrast-color);
   color: var(--neutral-color);
-  transition: all 0.5s ease-out;
+  transition: all 0.25s ease-out;
 
-  .icon {
-    font-size: 3.25rem;
-    transition: all ease-in-out;
+  .title {
+    color: black;
   }
 }

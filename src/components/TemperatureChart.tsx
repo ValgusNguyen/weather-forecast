@@ -23,8 +23,8 @@ const TemperatureChart = ({ chartData }: { chartData: Array<any> }) => {
 						<Area
 							type="monotone"
 							dataKey="temp"
-							stroke="#00a9ff"
-							fill="#89cff3"
+							stroke="#2C363F"
+							fill="#EE6C4D"
 							fillOpacity="0.5"
 						/>
 					</AreaChart>
