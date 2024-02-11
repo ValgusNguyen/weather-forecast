@@ -41,3 +41,5 @@ export const WEATHER_ICON: Record<string, IconDefinition> = {
 	'50d': faDroplet,
 	'50n': faDroplet,
 };
+
+export const DEFAULT_CITY_NAME = 'Hanoi';

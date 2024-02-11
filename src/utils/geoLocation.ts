@@ -1,38 +1,45 @@
+import { DEFAULT_CITY_NAME } from '@/constants';
 import { openWeatherAPI } from './axios';
 
 const getCoords = async () => {
-	const position = (await new Promise((resolve, reject) => {
-		navigator.geolocation.getCurrentPosition(resolve, reject);
-	})) as GeolocationPosition;
+	try {
+		const position = (await new Promise((resolve, reject) => {
+			navigator.geolocation.getCurrentPosition(resolve, reject);
+		})) as GeolocationPosition;
 
-	return {
-		lat: position.coords.latitude,
-		lon: position.coords.longitude,
-	};
+		return {
+			lat: position.coords.latitude,
+			lon: position.coords.longitude,
+		};
+	} catch (error) {
+		return undefined;
+	}
 };
 
 export const getUserWeather = async () => {
 	try {
-		const { lat, lon } = await getCoords();
+		const coords = await getCoords();
+
+		const params = coords
+			? {
+					...coords,
+					units: 'metric',
+				}
+			: {
+					q: DEFAULT_CITY_NAME,
+					units: 'metric',
+				};
 
 		const currentWeatherRequest = openWeatherAPI.request({
 			method: 'GET',
 			url: '/weather',
-			params: {
-				lat,
-				lon,
-				units: 'metric',
-			},
+			params,
 		});
 
 		const forecastRequest = openWeatherAPI.request({
 			method: 'GET',
 			url: '/forecast',
-			params: {
-				lat,
-				lon,
-				units: 'metric',
-			},
+			params,
 		});
 
 		const [currentWeatherData, forecastData] = await Promise.all([
