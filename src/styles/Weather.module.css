@@ -18,7 +18,7 @@
 		gap: 1rem;
 		justify-content: space-evenly;
 		align-items: center;
-		color: var(--contrast-color);
+		color: var(--primary-color);
 		font-weight: bold;
 
 		.current-weather-icon {
@@ -37,7 +37,7 @@
 	}
 
 	.weather-description {
-		color: var(--contrast-color);
+		color: var(--primary-color);
 		text-transform: capitalize;
 		letter-spacing: 2px;
 		font-size: 1.5rem;
@@ -55,7 +55,7 @@
 	.wind-value {
 		display: flex;
 		justify-content: space-evenly;
-		color: var(--contrast-color);
+		color: var(--primary-color);
 		margin-top: 0.5rem;
 	}
 }

@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  background: var(--accent-color);
+  background: var(--secondary-color);
   height: 100%;
   width: 100%;
   border-radius: 10px;
@@ -9,7 +9,7 @@
   margin: 1rem 0;
   align-items: center;
   justify-content: space-evenly;
-  color: var(--contrast-color);
+  color: var(--primary-color);
   cursor: grab;
   font-weight: bold;
 
@@ -24,7 +24,7 @@
     place-content: center;
 
     .title {
-      color: white;
+      color: var(--neutral-color);
       margin-bottom: 0.5rem;
       font-weight: normal;
     }
@@ -32,11 +32,11 @@
 }
 
 .container:hover {
-  background: var(--contrast-color);
+  background: var(--primary-color);
   color: var(--neutral-color);
   transition: all 0.25s ease-out;
 
   .title {
-    color: black;
+    color: var(--secondary-color);
   }
 }
