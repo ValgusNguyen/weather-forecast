@@ -1,6 +1,12 @@
 import styles from '@/styles/TemperatureChart.module.css';
 import { Area, AreaChart, ResponsiveContainer, Tooltip } from 'recharts';
 
+const renderToolTip = ({ payload }: Record<string, any>) => {
+	const data = payload[0]?.payload;
+
+	return data ? `${data.temperature}°C` : null;
+};
+
 const TemperatureChart = ({ chartData }: { chartData: Array<any> }) => {
 	const renderData = chartData.map(
 		([date, forecastInfo]: [
@@ -9,7 +15,7 @@ const TemperatureChart = ({ chartData }: { chartData: Array<any> }) => {
 		]) => {
 			const { main } = forecastInfo;
 
-			return { name: date, temp: main.feels_like };
+			return { name: date, temperature: main.feels_like };
 		},
 	);
 
@@ -19,10 +25,16 @@ const TemperatureChart = ({ chartData }: { chartData: Array<any> }) => {
 			<div className={styles.chart}>
 				<ResponsiveContainer width="100%" height="100%">
 					<AreaChart data={renderData}>
-						<Tooltip />
+						<Tooltip
+							content={renderToolTip}
+							cursor={{
+								stroke: '#006D77',
+								fill: '#83C5BE',
+							}}
+						/>
 						<Area
 							type="monotone"
-							dataKey="temp"
+							dataKey="temperature"
 							stroke="#006D77"
 							fill="#83C5BE"
 							fillOpacity="0.5"
