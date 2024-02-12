@@ -1,7 +1,6 @@
-import { MOBILE_WIDTH } from '@/constants';
 import { DateTime } from 'luxon';
 
-export const getCurrentDate = (timezone: number, windowWidth: number) => {
+export const getCurrentDate = (timezone: number) => {
 	const offset = `UTC${timezone < 0 ? '' : '+'}${timezone / 3600}`;
 	const dateTime = DateTime.now().setZone(offset);
 

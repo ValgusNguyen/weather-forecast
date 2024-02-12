@@ -1,37 +1,35 @@
 import Forecast from '@/components/Forecast';
 import Weather from '@/components/Weather';
-import { MOBILE_WIDTH } from '@/constants';
+import { BREAK_WIDTH } from '@/constants';
 import styles from '@/styles/WeatherInfo.module.css';
 import { useEffect, useState } from 'react';
+import ReactCardFlip from 'react-card-flip';
 
 const WeatherInfo = ({
 	currentWeather,
 	forecast,
+	isFlipped,
+	windowWidth,
 }: {
 	currentWeather: Record<string, any>;
 	forecast: Record<string, any>;
+	isFlipped: boolean;
+	windowWidth: number;
 }) => {
-	const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
-
-	useEffect(() => {
-		const handleResize = () => {
-			setWindowWidth(window.innerWidth);
-		};
-
-		window.addEventListener('resize', handleResize);
-
-		return () => {
-			window.removeEventListener('resize', handleResize);
-		};
-	}, []);
-
 	return (
-		<div className={styles.container}>
-			<div className={styles.left}>
-				<Weather weatherInfo={currentWeather} />
-			</div>
-			{windowWidth > MOBILE_WIDTH && <Forecast forecast={forecast} />}
-		</div>
+		<>
+			{windowWidth <= BREAK_WIDTH ? (
+				<ReactCardFlip isFlipped={isFlipped}>
+					<Weather weatherInfo={currentWeather} />
+					<Forecast forecast={forecast} />
+				</ReactCardFlip>
+			) : (
+				<div className={styles.container}>
+					<Weather weatherInfo={currentWeather} />
+					<Forecast forecast={forecast} />
+				</div>
+			)}
+		</>
 	);
 };
 

@@ -1,3 +1,4 @@
+import styles from '@/styles/Toggle.module.css';
 import { useState } from 'react';
 
 const Toggle = ({
@@ -5,26 +6,20 @@ const Toggle = ({
 	toggled,
 	onClick,
 }: {
-	label: string;
+	label?: string;
 	toggled: boolean;
 	onClick: (isToggled: boolean) => void;
 }) => {
-	const [isToggled, toggle] = useState(toggled);
-
-	const handleClick = () => {
-		toggle(!isToggled);
-		onClick(!isToggled);
-	};
-
 	return (
-		<label>
+		<label className={styles.container}>
 			<input
+				className={styles.input}
 				type="checkbox"
-				defaultChecked={isToggled}
-				onClick={handleClick}
+				defaultChecked={toggled}
+				onClick={onClick}
 			/>
-			<span />
-			<strong>{label}</strong>
+			<span className={styles.span} />
+			<strong className={styles.label}>{label}</strong>
 		</label>
 	);
 };
