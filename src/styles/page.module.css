@@ -1,5 +1,5 @@
 .card-container {
-	width: 70vw;
+	width: 100vw;
 	background: var(--neutral-color);
 	position: absolute;
 	display: flex;
@@ -11,4 +11,10 @@
 	color: var(--secondary-color);
 	border-radius: 10px;
 	container-type: inline-size;
+}
+
+@media (width >=700px) {
+	.card-container {
+		width: 70vw;
+	}
 }

@@ -16,7 +16,7 @@
 
 	.current-weather {
 		display: flex;
-		flex-wrap: wrap-reverse;
+		flex-wrap: wrap;
 		gap: 1rem;
 		justify-content: space-evenly;
 		align-items: center;
@@ -24,11 +24,11 @@
 		font-weight: bold;
 
 		.current-weather-icon {
-			font-size: 9rem;
+			font-size: clamp(3rem, 20vw, 9rem);
 		}
 
 		.temperature {
-			font-size: 3rem;
+			font-size: clamp(3rem, 10vw, 5rem);
 
 			.temperature-icon {
 				vertical-align: top;
