@@ -1,7 +1,7 @@
 import { DEFAULT_CITY_NAME } from '@/constants';
 import { openWeatherAPI } from './axios';
 
-const getCoords = async () => {
+export const getCoords = async () => {
 	try {
 		const position = (await new Promise((resolve, reject) => {
 			navigator.geolocation.getCurrentPosition(resolve, reject);

@@ -3,7 +3,7 @@ import { Location } from '@/components/Location';
 import WeatherInfo from '@/components/WeatherInfo';
 import styles from '@/styles/page.module.css';
 import { getUserWeather } from '@/utils/geoLocation';
-import { ChangeEvent, MouseEventHandler, useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 
 export default function Page() {
 	const [currentWeather, setCurrentWeather] = useState<Record<string, any>>(

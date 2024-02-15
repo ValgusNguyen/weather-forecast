@@ -1,5 +1,7 @@
 import { env } from '@/config';
-import axios from 'axios';
+import { DEFAULT_CITY_NAME } from '@/constants';
+import axios, { AxiosRequestConfig } from 'axios';
+import { getCoords } from './geoLocation';
 
 export const openWeatherAPI = axios.create({
 	baseURL: env.OPEN_WEATHER_API_URL,
@@ -16,6 +18,26 @@ openWeatherAPI.interceptors.response.use(
 		return Promise.reject(error);
 	},
 );
+
+export const openWeatherFetcher = async (url: string) => {
+	const coords = await getCoords();
+
+	const params = coords
+		? {
+				...coords,
+				units: 'metric',
+			}
+		: {
+				q: DEFAULT_CITY_NAME,
+				units: 'metric',
+			};
+
+	return openWeatherAPI.request({
+		method: 'GET',
+		url,
+		params,
+	});
+};
 
 export const geoDBAPI = axios.create({
 	baseURL: env.GEO_API_URL,
