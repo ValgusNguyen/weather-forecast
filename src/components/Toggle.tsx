@@ -1,14 +1,14 @@
 import styles from '@/styles/Toggle.module.css';
-import { useState } from 'react';
+import { MouseEventHandler, useState } from 'react';
 
 const Toggle = ({
 	label,
 	toggled,
-	onClick,
+	onClick: onChange,
 }: {
 	label?: string;
 	toggled: boolean;
-	onClick: (isToggled: boolean) => void;
+	onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }) => {
 	return (
 		<label className={styles.container}>
@@ -16,7 +16,7 @@ const Toggle = ({
 				className={styles.input}
 				type="checkbox"
 				defaultChecked={toggled}
-				onClick={onClick}
+				onChange={onChange}
 			/>
 			<span className={styles.span} />
 			<strong className={styles.label}>{label}</strong>

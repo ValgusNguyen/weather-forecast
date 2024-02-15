@@ -3,27 +3,29 @@ import { Location } from '@/components/Location';
 import WeatherInfo from '@/components/WeatherInfo';
 import styles from '@/styles/page.module.css';
 import { getUserWeather } from '@/utils/geoLocation';
-import { useEffect, useState } from 'react';
+import { ChangeEvent, MouseEventHandler, useEffect, useState } from 'react';
 
 export default function Page() {
 	const [currentWeather, setCurrentWeather] = useState<Record<string, any>>(
 		{},
 	);
 	const [forecast, setForecast] = useState<Record<string, any>>({});
-	const [isLoading, setIsLoading] = useState<boolean>(true);
+	const [isLoading, setIsLoading] = useState(true);
 	const [isFlipped, setIsFlipped] = useState(false);
-	const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+	const [windowWidth, setWindowWidth] = useState<null | number>(null);
 
 	useEffect(() => {
-		const handleResize = () => {
-			setWindowWidth(window.innerWidth);
-		};
+		if (typeof window !== 'undefined') {
+			const handleResize = () => {
+				setWindowWidth(window.innerWidth);
+			};
 
-		window.addEventListener('resize', handleResize);
+			window.addEventListener('resize', handleResize);
 
-		return () => {
-			window.removeEventListener('resize', handleResize);
-		};
+			return () => {
+				window.removeEventListener('resize', handleResize);
+			};
+		}
 	}, []);
 
 	useEffect(() => {
@@ -38,12 +40,6 @@ export default function Page() {
 		getInitialData();
 	}, []);
 
-	const handleFlipToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const isChecked = e.target.checked;
-
-		setIsFlipped(isChecked);
-	};
-
 	return (
 		<>
 			{isLoading ? (
@@ -54,15 +50,17 @@ export default function Page() {
 						name={currentWeather.name}
 						country={currentWeather.sys.country}
 						isToggled={isFlipped}
-						toggleClick={handleFlipToggle}
-						windowWidth={windowWidth}
+						toggleClick={(event: ChangeEvent<HTMLInputElement>) =>
+							setIsFlipped(event.target.checked)
+						}
+						windowWidth={windowWidth ?? 0}
 					/>
 					<WeatherInfo
 						{...{
 							currentWeather,
 							forecast,
 							isFlipped,
-							windowWidth,
+							windowWidth: windowWidth ?? 0,
 						}}
 					/>
 				</div>
