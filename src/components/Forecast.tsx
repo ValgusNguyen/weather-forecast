@@ -4,37 +4,25 @@ import { getDateTimefromUnix } from '@/utils/time';
 import ForecastCard from './ForecastCard';
 
 const Forecast = ({ forecast }: { forecast: Record<string, any> }) => {
-	const forecastList: Map<string, any> = forecast.list.reduce(
-		(
-			forecastDates: Map<string, any>,
-			{
-				dt,
-				main,
-				weather,
-			}: {
-				dt: number;
-				main: Record<string, any>;
-				weather: Record<string, any>;
-			},
-		) => {
-			const dateString = getDateTimefromUnix(dt);
+	const forecastList = forecast.list;
+	const forecastByDate = new Map();
 
-			if (forecastDates.has(dateString)) return forecastDates;
+	for (const { dt, main, weather } of forecastList) {
+		const dateString = getDateTimefromUnix(dt);
 
-			forecastDates.set(dateString, {
+		if (!forecastByDate.has(dateString)) {
+			forecastByDate.set(dateString, {
 				main,
 				weather: weather[0],
 			});
+		}
+	}
 
-			return forecastDates;
-		},
-		new Map(),
-	);
 	return (
 		<div className={styles.container}>
-			<TemperatureChart chartData={Array.from(forecastList)} />
+			<TemperatureChart chartData={Array.from(forecastByDate)} />
 			<div className={styles.detail}>
-				{Array.from(forecastList).map(
+				{Array.from(forecastByDate).map(
 					([date, weather]: [
 						date: string,
 						weather: Record<string, any>,
