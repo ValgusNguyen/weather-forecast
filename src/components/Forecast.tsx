@@ -1,9 +1,14 @@
+import { useForecast } from '@/api/useForecast';
 import TemperatureChart from '@/components/TemperatureChart';
 import styles from '@/styles/Forecast.module.css';
 import { getDateTimefromUnix } from '@/utils/time';
 import ForecastCard from './ForecastCard';
 
-const Forecast = ({ forecast }: { forecast: Record<string, any> }) => {
+const Forecast = () => {
+	const { forecast, isLoading, isError } = useForecast();
+
+	if (isLoading) return 'Loading...';
+
 	const forecastList = forecast.list;
 	const forecastByDate = new Map();
 

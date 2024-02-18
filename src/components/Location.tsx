@@ -1,3 +1,4 @@
+import { useWeather } from '@/api/useWeather';
 import Toggle from '@/components/Toggle';
 import { BREAK_WIDTH } from '@/constants';
 import styles from '@/styles/Location.module.css';
@@ -6,18 +7,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ChangeEvent, MouseEventHandler } from 'react';
 
 export const Location = ({
-	name,
-	country,
 	isToggled,
-	toggleClick,
+	toggleChange,
 	windowWidth,
 }: {
-	name: string;
-	country: string;
 	isToggled: boolean;
-	toggleClick: (event: ChangeEvent<HTMLInputElement>) => void;
+	toggleChange: (event: ChangeEvent<HTMLInputElement>) => void;
 	windowWidth: number;
 }) => {
+	const { weather, isLoading, isError } = useWeather();
+
+	if (isLoading) return 'Loading...';
+
+	const name = weather.name;
+	const country = weather.sys.country;
+
 	return (
 		<div className={styles.container}>
 			<div className={styles.location}>
@@ -25,7 +29,7 @@ export const Location = ({
 				<span className={styles.text}>{`${name}, ${country}`}</span>
 			</div>
 			{windowWidth <= BREAK_WIDTH && (
-				<Toggle toggled={isToggled} onClick={toggleClick} />
+				<Toggle toggled={isToggled} onChange={toggleChange} />
 			)}
 		</div>
 	);

@@ -1,3 +1,5 @@
+import { useForecast } from '@/api/useForecast';
+import { useWeather } from '@/api/useWeather';
 import Forecast from '@/components/Forecast';
 import Weather from '@/components/Weather';
 import { BREAK_WIDTH } from '@/constants';
@@ -6,13 +8,9 @@ import { useEffect, useState } from 'react';
 import ReactCardFlip from 'react-card-flip';
 
 const WeatherInfo = ({
-	currentWeather,
-	forecast,
 	isFlipped,
 	windowWidth,
 }: {
-	currentWeather: Record<string, any>;
-	forecast: Record<string, any>;
 	isFlipped: boolean;
 	windowWidth: number;
 }) => {
@@ -20,13 +18,13 @@ const WeatherInfo = ({
 		<>
 			{windowWidth <= BREAK_WIDTH ? (
 				<ReactCardFlip isFlipped={isFlipped}>
-					<Weather weatherInfo={currentWeather} />
-					<Forecast forecast={forecast} />
+					<Weather />
+					<Forecast />
 				</ReactCardFlip>
 			) : (
 				<div className={styles.container}>
-					<Weather weatherInfo={currentWeather} />
-					<Forecast forecast={forecast} />
+					<Weather />
+					<Forecast />
 				</div>
 			)}
 		</>

@@ -1,10 +1,10 @@
 import styles from '@/styles/Toggle.module.css';
-import { MouseEventHandler, useState } from 'react';
+import { ChangeEvent } from 'react';
 
 const Toggle = ({
 	label,
 	toggled,
-	onClick: onChange,
+	onChange,
 }: {
 	label?: string;
 	toggled: boolean;

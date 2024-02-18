@@ -7,7 +7,7 @@ export const useWeather = () => {
 	const { data, error, isLoading } = useSWR(url, openWeatherFetcher);
 
 	return {
-		weather: data,
+		weather: data as Record<string, any>,
 		isError: error,
 		isLoading,
 	};

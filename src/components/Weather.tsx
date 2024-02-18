@@ -1,25 +1,29 @@
+import { useWeather } from '@/api/useWeather';
 import { WEATHER_ICON } from '@/constants';
 import styles from '@/styles/Weather.module.css';
-import { getCurrentDate } from '@/utils/time';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-const Weather = ({ weatherInfo }: Record<string, any>) => {
-	const { timezone } = weatherInfo;
-	const currentWeather = weatherInfo.weather[0];
+const Weather = () => {
+	const { weather, isLoading, isError } = useWeather();
+	const [dateTime, setDateTime] = useState('');
+
+	// const { timezone } = weather;
+
+	// useEffect(() => {
+	// 	const intervalId = setInterval(() => {
+	// 		const currentDate = getCurrentDate(weather.timezone);
+	//
+	// 		setDateTime(currentDate);
+	// 	}, 1000);
+	//
+	// 	return () => clearInterval(intervalId);
+	// }, [timezone]);
+
+	if (isLoading) return 'Loading...';
+
+	const currentWeather = weather?.weather[0];
 	const currentWeatherIcon = WEATHER_ICON[currentWeather.icon];
-
-	const [dateTime, setDateTime] = useState<string>(getCurrentDate(timezone));
-
-	useEffect(() => {
-		const intervalId = setInterval(() => {
-			const currentDate = getCurrentDate(timezone);
-
-			setDateTime(currentDate);
-		}, 1000);
-
-		return () => clearInterval(intervalId);
-	}, [timezone]);
 
 	return (
 		<div className={styles.weather}>
@@ -30,7 +34,7 @@ const Weather = ({ weatherInfo }: Record<string, any>) => {
 					icon={currentWeatherIcon}
 				/>
 				<h1 className={styles['temperature']}>
-					{weatherInfo.main.temp}
+					{weather.main.temp}
 					<span className={styles['temperature-icon']}>°C</span>
 				</h1>
 			</div>
@@ -41,13 +45,13 @@ const Weather = ({ weatherInfo }: Record<string, any>) => {
 				<div className={styles['parameter-row']}>
 					<p className={styles['humidity']}>Humidity</p>
 					<span className={styles['humidity-value']}>
-						{weatherInfo.main.humidity} %
+						{weather.main.humidity} %
 					</span>
 				</div>
 				<div className={styles['parameter-row']}>
 					<p className={styles['wind-speed']}>Wind Speed</p>
 					<span className={styles['wind-value']}>
-						{weatherInfo.wind.speed} Km/J
+						{weather.wind.speed} Km/J
 					</span>
 				</div>
 			</div>
