@@ -17,7 +17,7 @@ export const Location = ({
 }) => {
 	const { weather, isLoading, isError } = useWeather();
 
-	if (isLoading) return 'Loading...';
+	if (isLoading) return <div>Loading...</div>;
 
 	const name = weather.name;
 	const country = weather.sys.country;

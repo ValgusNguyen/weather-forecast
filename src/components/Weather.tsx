@@ -20,7 +20,7 @@ const Weather = () => {
 	// 	return () => clearInterval(intervalId);
 	// }, [timezone]);
 
-	if (isLoading) return 'Loading...';
+	if (isLoading) return <div>Loading...</div>;
 
 	const currentWeather = weather?.weather[0];
 	const currentWeatherIcon = WEATHER_ICON[currentWeather.icon];

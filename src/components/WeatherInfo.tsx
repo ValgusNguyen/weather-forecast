@@ -1,10 +1,7 @@
-import { useForecast } from '@/api/useForecast';
-import { useWeather } from '@/api/useWeather';
 import Forecast from '@/components/Forecast';
 import Weather from '@/components/Weather';
 import { BREAK_WIDTH } from '@/constants';
 import styles from '@/styles/WeatherInfo.module.css';
-import { useEffect, useState } from 'react';
 import ReactCardFlip from 'react-card-flip';
 
 const WeatherInfo = ({

@@ -5,9 +5,9 @@ import { getDateTimefromUnix } from '@/utils/time';
 import ForecastCard from './ForecastCard';
 
 const Forecast = () => {
-	const { forecast, isLoading, isError } = useForecast();
+	const { forecast, isLoading } = useForecast();
 
-	if (isLoading) return 'Loading...';
+	if (isLoading) return <div>Loading...</div>;
 
 	const forecastList = forecast.list;
 	const forecastByDate = new Map();
