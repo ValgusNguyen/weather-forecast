@@ -1,9 +1,12 @@
 .daily_forecast {
 	display: flex;
+  margin-top: 10px ;
 }
 
 .hidden {
-    flex: 1;
-    margin: 0px;
-  }
+	flex: 1;
+	margin: 20px;
+}
 
+/* .humidity {
+} */

@@ -1,32 +1,109 @@
-import React, { useContext } from 'react'
-import {ChartData} from 'chart.js';
+import React, { useContext } from 'react';
+import { Line } from 'react-chartjs-2';
+import Chart from 'chart.js/auto';
+import {
+	Colors,
+	LineController,
+	CategoryScale,
+	LinearScale,
+	LineElement,
+	PointElement,
+	Legend,
+} from 'chart.js';
 
-const Chart = ( dataF: any ) => {
-    const datasets: ChartData <'bar', {key: string, value: number} []> = {
-        datasets: [{
-          data: [dataF.map()],
-          parsing: {
-            xAxisKey: `{dataF.list.splice(0, 7)}`,
-            yAxisKey: `{dataF.main.humidity}`
-          }
-        }],
-      };
-    
-  return (
-    <div className='Chart'>
-      <div className="third_Container">
-        <div className="header_Container">
+Chart.register(
+	Colors,
+	LineController,
+	CategoryScale,
+	LinearScale,
+	LineElement,
+	PointElement,
+	Legend,
+);
+
+const TempChart = ({ data }: any) => {
+	const labels = [
+		data.list[0].dt_txt.slice(11, 16),
+		data.list[3].dt_txt.slice(11, 16),
+		data.list[6].dt_txt.slice(11, 16),
+		data.list[9].dt_txt.slice(11, 16),
+		data.list[12].dt_txt.slice(11, 16),
+		data.list[15].dt_txt.slice(11, 16),
+	];
+	const Chartdata = {
+		labels: labels,
+		datasets: [
+			{
+				label: 'Weather Temperature Dataset',
+				data: [
+					data.list[0].main.temp,
+					data.list[3].main.temp,
+					data.list[6].main.temp,
+					data.list[9].main.temp,
+					data.list[12].main.temp,
+					data.list[15].main.temp,
+				],
+				fill: {
+					target: 'origin',
+					above: '#64BCF1',
+				},
+				borderColor: '#FFFFFF',
+				pointBorderColor: '#5596E5',
+				pointBorderWidth: 2,
+				borderWidth: 2,
+				pointStyle: 'rectRounded',
+				pointRadius: 10,
+				pointHoverRadius: 15,
+				tension: 0.3,
+			},
+		],
+	};
+	const options = {
+		responsive: true,
+		spanGaps: 10,
+		maintainAspectRatio: false,
+		plugins: {
+			legend: false,
+		},
+		scales: {
+			x: {
+				grid: { display: false, tickWidth: 1 },
+				ticks: {},
+				display: false,
+				title: {
+					display: true,
+					text: 'Day',
+				},
+			},
+			y: {
+				min: 0,
+				max: 80,
+				ticks: {
+					callback: (value: any) => value + '°C',
+				},
+				title: {
+					display: true,
+					text: 'Temperature(°C)',
+				},
+			},
+		},
+	};
+
+	const config = {
+		type: 'line',
+		data: data,
+	};
+	return (
+		<div className="Chart">
+			<div className="third_Container">
+				<div className="header_Container">
+        <Line
+            data={Chartdata}
+            // options= {options}
+          ></Line>
         </div>
-        <div className="content_Container">
-          <div className="list_Container">
-            {/* <h3 className="display_List_Container">Humidity - {data.humidity} </h3>
-            <h3 className="display_List_Container">Visbility - {.visibility}</h3>
-            <h3 className="display_List_Container">Wind Speed - {.speed}</h3>
-            <h3 className="display_List_Container">Temp - {.temp}</h3> */}
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-export default Chart
+			</div>
+		</div>
+	);
+};
+export default TempChart;

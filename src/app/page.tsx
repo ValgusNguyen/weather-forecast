@@ -6,7 +6,9 @@ import CurrentWeather from '@/components/Weather';
 import { WEATHER_API_KEY, WEATHER_API_URL } from './Api';
 import Forecast from '@/components/forecast';
 import { useEffect, useState } from 'react';
+import TempChart from '@/components/Chart'
 import { GEO_URL, geoApiOptions } from '../app/Api';
+import { Chart } from 'chart.js';
 
 export default function Home() {
 	const [currentWeather, setCurrentWeather] = useState();
@@ -85,9 +87,13 @@ export default function Home() {
 				</div>
 				{currentWeather && <CurrentWeather data={currentWeather} />}
 			</div>
-			<div className={styles.rightSide}>
-				<Forecast data={forecast} />
-				{/* {forecast && <Forecast data={forecast} />} */}
+			<div>
+			<div>
+			{ forecast && <TempChart data={forecast} />}
+			</div>
+			<div>
+				{ forecast && <Forecast data={forecast} />}
+			</div>
 			</div>
 		</div>
 	);
