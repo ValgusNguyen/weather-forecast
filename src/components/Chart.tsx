@@ -48,7 +48,7 @@ const TempChart = ({ data }: any) => {
 					above: '#64BCF1',
 				},
 				borderColor: '#FFFFFF',
-				pointBorderColor: '#5596E5',
+				pointBorderColor: '#EEB7DB',
 				pointBorderWidth: 2,
 				borderWidth: 2,
 				pointStyle: 'rectRounded',
