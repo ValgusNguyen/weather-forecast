@@ -24,9 +24,8 @@ const CurrentWeather = ({ data }: any) => {
 			</h3>
 			<div className="current-weather">
 				<img
-					alt="weather"
 					className="weather-icon"
-					src={`weathericons${data.weather[0].icon}`}
+					src= {`..\src\assets\weathericons${data.weather[0].icon}`}
 				/>
 				<h1 className="temperature">
 					{Math.round(data.main.temp)}
