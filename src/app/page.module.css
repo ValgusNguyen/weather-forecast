@@ -17,7 +17,7 @@
 .container {
 	height: 550px;
 	width: 80%;
-	background: rgb(176, 211, 225);
+	background: rgb(8, 82, 111);
 	background-size: cover;
 	display: flex;
 	flex-direction: row;
@@ -31,7 +31,7 @@
 	padding: 25px 30px;
 	height: 500px;
 	width: 70%;
-	background-color: rgb(196, 196, 236);
+	/* background-color: rgb(196, 196, 236); */
 	z-index: 2;
 }
 

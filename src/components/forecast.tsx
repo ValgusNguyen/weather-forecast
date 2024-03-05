@@ -1,39 +1,40 @@
 import './rightSide.css';
 
+const Forecast = ({ data }: any) => {
+	const List = data.list
+	console.log(List)
+	const days = [
+		'Monday',
+		'Tuesday',
+		'Wednesday',
+		'Thursday',
+		'Friday',
+		'Saturday',
+		'Sunday',
+	];
+	const d = new Date().getDay();
+	console.log(d, 'd');
+	let forecastDay = days
+		.slice(d, days.length)
+		.concat(days.slice(0, days.length));
+	console.log(forecastDay, 'day');
 
-
-const Forecast = ({data}: any) => {
-	// const day=
-	
 	return (
 		<>
 			<label className="title">Daily forecast</label>
 			<div className="daily_forecast">
-				<div className="hidden">
-				<h3>Today</h3>
-				<img className='small-icon' src=""></img>
-				<p>Humidity</p>
-				<span className="humidity">30%</span>
-				</div> 
-				<div className="hidden">
-				<h3>Today</h3>
-				<img></img>
-				<p>Humidity</p>
-				<span className="humidity">30%</span>
-				</div> 
-				<div className="hidden">
-				<h3>Today</h3>
-				<img></img>
-				<p>Humidity</p>
-				<span className="humidity">30%</span>
-				</div> 
-				<div className="hidden">
-				<h3>Today</h3>
-				<img></img>
-				<p>Humidity</p>
-				<span className="humidity">30%</span>
-				</div> 
-				{/* <span className="humidity">{data.main.humidity}%</span> */}
+				{/* {List.splice(0, 7).map((item:any, i:any) => (
+					<div key={i} className="hidden">
+						<h3>Today</h3>
+						<img
+							className="small-icon"
+							src={item.iconUrl}
+						/>
+						<p>Humidity</p>
+						<span className="humidity">{item.humidity}%</span>
+					</div>
+				))} */}
+				
 			</div>
 		</>
 	);

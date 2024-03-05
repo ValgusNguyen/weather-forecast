@@ -52,17 +52,7 @@ const Search = ({ setCity }: any) => {
 	return (
 	  <div className="search-bar">
 		<div className="omrs-input-group">
-		  <form onSubmit={handleSubmit}>
-			<label>
-			  <input
-				type="text"
-				name="Location"
-				value={location}
-				required
-				onChange={(e) => setLocation(e.target.value)}
-			  />
-			</label>
-		  </form>
+			
 		</div>
 	  </div>
 	);

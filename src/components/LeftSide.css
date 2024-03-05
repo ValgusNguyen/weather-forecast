@@ -3,7 +3,7 @@
 	flex-direction: column;
 	justify-content: space-evenly;
 	height: 70%;
-	background-color: rgba(171, 110, 110, 0.744);
+	/* background-color: rgba(171, 110, 110, 0.744); */
 }
 
 .searchBar {
@@ -14,7 +14,7 @@
 	width: 300px;
 	height: 20%;
 	padding: 20px 10px;
-	background-color: black;
+	/* background-color: black; */
 }
 
 .current-date {
