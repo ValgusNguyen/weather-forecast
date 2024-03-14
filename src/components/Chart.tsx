@@ -81,7 +81,7 @@ const TempChart = ({ data }: any) => {
 				min: 0,
 				max: 80,
 				ticks: {
-					callback: (value: any) => value + '°C',
+					callback: (value: number) => value + '°C',
 				},
 				title: {
 					display: true,

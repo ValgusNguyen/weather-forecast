@@ -14,17 +14,19 @@ export default function Home() {
 	const [forecast, setForecast] = useState();
 	const [location, setLocation] = useState('');
 	const [toggle, setToggle] = useState(true);
-	
-	useEffect(() => {
-		document.body.style.background = `url(/${toggle ? 'day' : 'night'}.png)`
-	   }, [toggle]);
-	   useEffect(() => {
-		 const hour = new Date().getHours();
-		 const isDay = hour >=6 && hour < 18; 
-		 setToggle(isDay);
-	   }, []);
 
-	async function getCityName(lat: any, lon: any) {
+	useEffect(() => {
+		document.body.style.background = `url(/${
+			toggle ? 'day' : 'night'
+		}.png)`;
+	}, [toggle]);
+	useEffect(() => {
+		const hour = new Date().getHours();
+		const isDay = hour >= 6 && hour < 18;
+		setToggle(isDay);
+	}, []);
+
+	async function getCityName(lat: number, lon: number) {
 		try {
 			const response = await fetch(
 				`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`,
@@ -54,7 +56,7 @@ export default function Home() {
 		};
 	}, []);
 
-	async function fetchData(lat: any, lon: any) {
+	async function fetchData(lat: number, lon: number) {
 		try {
 			const response = await fetch(
 				`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`,
@@ -80,29 +82,33 @@ export default function Home() {
 
 	return (
 		<div className={styles.main}>
-		<div className={styles.container}>
-			<div className={styles.leftSide}>
-				<div className="searchBar">
-					<h1>Your City</h1>
-					<input
-						id="location"
-						type="text"
-						value={location}
-						onChange={input => {
-							setLocation(input.target.value);
-						}}
-					// style={{
-					//   transform: toggle ? "scaleX(1)" : "scaleX(-1)",
-					// }}
+			<div className={styles.container}>
+				<div className={styles.leftSide}>
+					<div className="searchBar">
+						<h1>Your City</h1>
+						<input
+							id="location"
+							type="text"
+							value={location}
+							onChange={input => {
+								setLocation(input.target.value);
+							}}
+							onClick={() => {
+								setToggle(!toggle);
+							}}
 						/>
+					</div>
+					{currentWeather && <CurrentWeather data={currentWeather} />}
 				</div>
-				{currentWeather && <CurrentWeather data={currentWeather} />}
-			</div>
-			<div className={styles.rightSide}>
-				<div className={styles.third_Container}>{forecast && <TempChart data={forecast} />}</div>
-				<div className={styles.fourth_Container}>{forecast && <Forecast data={forecast} />}</div>
+				<div className={styles.rightSide}>
+					<div className={styles.third_Container}>
+						{forecast && <TempChart data={forecast} />}
+					</div>
+					<div className={styles.fourth_Container}>
+						{forecast && <Forecast data={forecast} />}
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
 	);
 }

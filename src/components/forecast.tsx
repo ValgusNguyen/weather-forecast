@@ -38,7 +38,7 @@ const Forecast = ({ data }: any) => {
 				<div className="hidden">
 					<h3 className='date'>{date2}</h3>
 					<img
-						src={`..\src\assets\weathericons/${List[3].weather[0].icon}`}
+						src={`/weathericons/${List[3].weather[0].icon}.png`}
 					/>
 					<p>Humidity</p>
 					<span className="humidity">{List[3].main.humidity}%</span>
@@ -46,7 +46,7 @@ const Forecast = ({ data }: any) => {
 				<div className="hidden">
 					<h3 className='date'>{date3}</h3>
 					<img
-						src={`..\src\assets\weathericons/${List[6].weather[0].icon}`}
+						src={`/weathericons/${List[6].weather[0].icon}.png`}
 					/>
 					<p>Humidity</p>
 					<span className="humidity">{List[6].main.humidity}%</span>
@@ -54,7 +54,7 @@ const Forecast = ({ data }: any) => {
 				<div className="hidden">
 					<h3 className='date'>{date4}</h3>
 					<img
-						src={`..\src\assets\weathericons/${List[9].weather[0].icon}`}
+						src={`/weathericons/${List[9].weather[0].icon}.png`}
 					/>
 					<p>Humidity</p>
 					<span className="humidity">{List[9].main.humidity}%</span>
@@ -62,7 +62,7 @@ const Forecast = ({ data }: any) => {
 				<div className="hidden">
 					<h3 className='date'>{date5}</h3>
 					<img
-						src={`..\src\assets\weathericons/${List[12].weather[0].icon}`}
+						src={`/weathericons/${List[12].weather[0].icon}.png`}
 					/>
 					<p>Humidity</p>
 					<span className="humidity">{List[12].main.humidity}%</span>
