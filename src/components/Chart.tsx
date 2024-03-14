@@ -29,6 +29,7 @@ const TempChart = ({ data }: any) => {
 		data.list[9].dt_txt.slice(11, 16),
 		data.list[12].dt_txt.slice(11, 16),
 		data.list[15].dt_txt.slice(11, 16),
+		data.list[18].dt_txt.slice(11, 16),
 	];
 	const Chartdata = {
 		labels: labels,
@@ -42,6 +43,7 @@ const TempChart = ({ data }: any) => {
 					data.list[9].main.temp,
 					data.list[12].main.temp,
 					data.list[15].main.temp,
+					data.list[18].main.temp,
 				],
 				fill: {
 					target: 'origin',
@@ -58,7 +60,7 @@ const TempChart = ({ data }: any) => {
 			},
 		],
 	};
-	const options = {
+	const options: any = {
 		responsive: true,
 		spanGaps: 10,
 		maintainAspectRatio: false,
@@ -97,11 +99,8 @@ const TempChart = ({ data }: any) => {
 		<div className="Chart">
 			<div className="third_Container">
 				<div className="header_Container">
-        <Line
-            data={Chartdata}
-            // options= {options}
-          ></Line>
-        </div>
+					<Line data={Chartdata} options={options}></Line>
+				</div>
 			</div>
 		</div>
 	);

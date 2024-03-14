@@ -1,9 +1,6 @@
 'use client';
 import Image from 'next/image';
-import snow from '../assets/snow.jpg';
-import sun from '../assets/sun.jpg';
 import styles from './page.module.css';
-import Search from '../components/SearchBar';
 import CurrentWeather from '@/components/Weather';
 import { WEATHER_API_KEY, WEATHER_API_URL } from './Api';
 import Forecast from '@/components/forecast';
@@ -16,6 +13,16 @@ export default function Home() {
 	const [currentWeather, setCurrentWeather] = useState();
 	const [forecast, setForecast] = useState();
 	const [location, setLocation] = useState('');
+	const [toggle, setToggle] = useState(true);
+	
+	useEffect(() => {
+		document.body.style.background = `url(/${toggle ? 'day' : 'night'}.png)`
+	   }, [toggle]);
+	   useEffect(() => {
+		 const hour = new Date().getHours();
+		 const isDay = hour >=6 && hour < 18; 
+		 setToggle(isDay);
+	   }, []);
 
 	async function getCityName(lat: any, lon: any) {
 		try {
@@ -46,14 +53,7 @@ export default function Home() {
 			}
 		};
 	}, []);
-	// useEffect(() => {
-	// 	document.body.style = `background-image:  linear-gradient(), url(${toggle ? sun : snow});`
-	//    }, [toggle]);
-	//    useEffect(() => {
-	// 	 const hour = new Date().getHours();
-	// 	 const isDay = hour >=6 && hour < 18; 
-	// 	 setToggle(isDay);
-	//    }, []);
+
 	async function fetchData(lat: any, lon: any) {
 		try {
 			const response = await fetch(
@@ -79,7 +79,7 @@ export default function Home() {
 	}
 
 	return (
-		<div style={{backgroundImage: 'url($snow)'}}>
+		<div className={styles.main}>
 		<div className={styles.container}>
 			<div className={styles.leftSide}>
 				<div className="searchBar">
@@ -91,13 +91,16 @@ export default function Home() {
 						onChange={input => {
 							setLocation(input.target.value);
 						}}
+					// style={{
+					//   transform: toggle ? "scaleX(1)" : "scaleX(-1)",
+					// }}
 						/>
 				</div>
 				{currentWeather && <CurrentWeather data={currentWeather} />}
 			</div>
-			<div>
-				<div>{forecast && <TempChart data={forecast} />}</div>
-				<div>{forecast && <Forecast data={forecast} />}</div>
+			<div className={styles.rightSide}>
+				<div className={styles.third_Container}>{forecast && <TempChart data={forecast} />}</div>
+				<div className={styles.fourth_Container}>{forecast && <Forecast data={forecast} />}</div>
 			</div>
 		</div>
 	</div>

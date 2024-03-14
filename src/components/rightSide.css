@@ -1,16 +1,26 @@
 .daily_forecast {
 	display: flex;
-  margin-top: 0px ;
+	margin-top: 0px;
 }
 
 .hidden {
-	flex: 1;
-	margin: 20px;
+	/* flex: auto; */
+	height: 160px;
+    width: 90px;
+    border-radius: 10px;
+    /* flex-direction: column; */
+	margin: 5px;
+	background-color: rgba(30, 68, 109, 0.2);
+	padding: 40px 10px;
+	border-radius: 20px;
 }
 
-/* .humidity {
-} */
+.humidity {
+	align-items: center;
+	margin-top: 0
+}
 
 .Chart {
-  margin-top: 50px;
+	margin-top: 50px;
+	margin-right: 10px;
 }
