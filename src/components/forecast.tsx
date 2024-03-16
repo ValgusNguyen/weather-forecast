@@ -1,5 +1,6 @@
 import './rightSide.css';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Forecast = ({ data }: Record<string, any>) => {
 	const List = data.list;
 	const months = [

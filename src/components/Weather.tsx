@@ -1,6 +1,4 @@
-import { faCloud, faSun } from '@fortawesome/free-solid-svg-icons';
 import './LeftSide.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Time and date
 const time = new Date().toLocaleTimeString('en-us', {
@@ -16,6 +14,7 @@ const date = new Date().toLocaleDateString('en-us', {
 	day: 'numeric',
 });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CurrentWeather = ({ data }: Record<string, any>) => {
 	return (
 		<div className="weather">
