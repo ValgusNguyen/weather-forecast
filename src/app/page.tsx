@@ -32,7 +32,6 @@ export default function Home() {
 				`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`,
 			);
 			const data = await response.json();
-			console.log(data);
 			let cityName = data.name;
 			setLocation(cityName);
 		} catch (error) {

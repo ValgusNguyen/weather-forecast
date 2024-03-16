@@ -21,7 +21,7 @@ Chart.register(
 	Legend,
 );
 
-const TempChart = ({ data }: any) => {
+const TempChart = ({ data }: Record<string, any>) => {
 	const labels = [
 		data.list[0].dt_txt.slice(11, 16),
 		data.list[3].dt_txt.slice(11, 16),

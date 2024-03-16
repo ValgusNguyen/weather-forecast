@@ -16,7 +16,7 @@ const date = new Date().toLocaleDateString('en-us', {
 	day: 'numeric',
 });
 
-const CurrentWeather = ({ data }: any) => {
+const CurrentWeather = ({ data }: Record<string, any>) => {
 	return (
 		<div className="weather">
 			<h3 className="current-date">

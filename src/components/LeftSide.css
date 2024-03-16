@@ -46,11 +46,12 @@
 }
 
 .bottom {
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	padding: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
+
+
 
 .humidity,
 .wind_value {
