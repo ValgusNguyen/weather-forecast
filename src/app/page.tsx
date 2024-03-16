@@ -1,13 +1,10 @@
 'use client';
-import Image from 'next/image';
 import styles from './page.module.css';
 import CurrentWeather from '@/components/Weather';
 import { WEATHER_API_KEY, WEATHER_API_URL } from './Api';
 import Forecast from '@/components/forecast';
 import { useEffect, useState } from 'react';
 import TempChart from '@/components/Chart';
-import { GEO_URL, geoApiOptions } from '../app/Api';
-import { Chart } from 'chart.js';
 
 export default function Home() {
 	const [currentWeather, setCurrentWeather] = useState();
@@ -29,10 +26,10 @@ export default function Home() {
 	async function getCityName(lat: number, lon: number) {
 		try {
 			const response = await fetch(
-				`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`,
+				`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
 			);
 			const data = await response.json();
-			let cityName = data.name;
+			const cityName = data.name;
 			setLocation(cityName);
 		} catch (error) {
 			console.error('Can not get location');
@@ -43,7 +40,6 @@ export default function Home() {
 		if (navigator.geolocation) {
 			watchId = navigator.geolocation.watchPosition(position => {
 				const { latitude, longitude } = position.coords;
-				console.log('longitude: ', longitude, 'latitude: ', latitude);
 				getCityName(latitude, longitude);
 				fetchData(latitude, longitude);
 			});
@@ -58,11 +54,11 @@ export default function Home() {
 	async function fetchData(lat: number, lon: number) {
 		try {
 			const response = await fetch(
-				`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`,
+				`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
 			);
 
 			const responseF = await fetch(
-				`${WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`,
+				`${WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
 			);
 
 			if (!response.ok && !responseF.ok) {
@@ -70,8 +66,6 @@ export default function Home() {
 			}
 			const data = await response.json();
 			const dataF = await responseF.json();
-			console.log(data);
-			console.log('F', dataF);
 			setCurrentWeather(data);
 			setForecast(dataF);
 		} catch (error) {

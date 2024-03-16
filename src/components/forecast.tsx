@@ -2,7 +2,6 @@ import './rightSide.css';
 
 const Forecast = ({ data }: Record<string, any>) => {
 	const List = data.list;
-	console.log(List);
 	const months = [
 		'January',
 		'February',
@@ -18,12 +17,12 @@ const Forecast = ({ data }: Record<string, any>) => {
 		'December',
 	];
 	const day = new Date();
-	let month = months[day.getMonth()];
-	let date = `${month} ${day.getDate()}`;
-	let date2 = `${month} ${day.getDate() + 1}`;
-	let date3 = `${month} ${day.getDate() + 2}`;
-	let date4 = `${month} ${day.getDate() + 3}`;
-	let date5 = `${month} ${day.getDate() + 4}`;
+	const month = months[day.getMonth()];
+	const date = `${month} ${day.getDate()}`;
+	const date2 = `${month} ${day.getDate() + 1}`;
+	const date3 = `${month} ${day.getDate() + 2}`;
+	const date4 = `${month} ${day.getDate() + 3}`;
+	const date5 = `${month} ${day.getDate() + 4}`;
 	return (
 		<>
 			<div className="daily_forecast">

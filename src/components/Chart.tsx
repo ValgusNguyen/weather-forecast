@@ -1,4 +1,3 @@
-import React, { useContext } from 'react';
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import {
@@ -18,9 +17,8 @@ Chart.register(
 	LinearScale,
 	LineElement,
 	PointElement,
-	Legend,
+	Legend
 );
-
 const TempChart = ({ data }: Record<string, any>) => {
 	const labels = [
 		data.list[0].dt_txt.slice(11, 16),
@@ -60,7 +58,7 @@ const TempChart = ({ data }: Record<string, any>) => {
 			},
 		],
 	};
-	const options: any = {
+	const options = {
 		responsive: true,
 		spanGaps: 10,
 		maintainAspectRatio: false,
@@ -91,15 +89,11 @@ const TempChart = ({ data }: Record<string, any>) => {
 		},
 	};
 
-	const config = {
-		type: 'line',
-		data: data,
-	};
 	return (
 		<div className="Chart">
 			<div className="third_Container">
 				<div className="header_Container">
-					<Line data={Chartdata} options={options}></Line>
+					<Line data={Chartdata} options={options as never} ></Line>
 				</div>
 			</div>
 		</div>
