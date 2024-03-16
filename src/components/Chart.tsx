@@ -19,6 +19,7 @@ Chart.register(
 	PointElement,
 	Legend
 );
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const TempChart = ({ data }: Record<string, any>) => {
 	const labels = [
 		data.list[0].dt_txt.slice(11, 16),
